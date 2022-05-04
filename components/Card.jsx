@@ -44,7 +44,7 @@ export default function Card({
             </div>
             <div className="flex flex-col justify-between flex-1 px-4 py-4 md:px-6">
               <div>
-                <h3 className="mb-4 text-lg font-bold leading-tight tracking-normal uppercase">
+                <h3 className="mb-4 text-lg font-bold leading-tight tracking-normal uppercase line-clamp-2">
                   {/**
                    * TODO: wrap title with <a> tag, direct to details page
                    */}
@@ -56,16 +56,23 @@ export default function Card({
                     {date}, {time}
                   </span>
                 </div>{' '}
-                <div className="flex items-center mb-1 text-sm text-gray-700">
-                  <img src="/money.png" alt="watch time" className="mr-2" />
-                  <span>{price}</span>
-                </div>{' '}
-                <div className="flex items-center mb-4 text-sm text-gray-700">
-                  <img src="/pin-fill.png" alt="watch time" className="mr-2 " />
+                <div className="flex items-start mb-1 text-sm text-gray-700">
+                  <img
+                    src="/pin-fill.png"
+                    alt="watch time"
+                    className="pt-[2px] mr-2"
+                  />
+
                   <span>
-                    {location}, <span>{regency}</span>
+                    <p className="line-clamp-2">
+                      {location}, <span>{regency}</span>
+                    </p>
                   </span>
                 </div>
+                <div className="flex items-center mb-4 text-sm text-gray-700">
+                  <img src="/money.png" alt="watch time" className="mr-2" />
+                  <span>HTM Rp{price}</span>
+                </div>{' '}
                 {/* <p className="mt-1 mb-4 text-sm leading-normal text-gray-500">
                   {description}
                 </p> */}

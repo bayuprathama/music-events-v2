@@ -6,46 +6,9 @@ import { useEffect } from 'react';
 import MobileMenu from './MobileMenu';
 import MenuOpen from './icons/MenuOpen';
 import MenuClose from './icons/MenuClose';
-import SearchIcon from './icons/SearchIcon';
 import logo from './icons/logo.svg';
-import { useRouter } from 'next/router';
-
-// Navigation item component
-export function NavItem({ title, href }) {
-  const router = useRouter();
-  const isActive = router.asPath === href;
-  return (
-    <li>
-      <Link href={href}>
-        <a
-          className={cn(
-            isActive ? 'text-gray-700 font-medium' : 'text-gray-500'
-          )}
-        >
-          {title}
-        </a>
-      </Link>
-    </li>
-  );
-}
-
-// Search bar component
-export function SearchBar({ childClassName, className }) {
-  return (
-    <div
-      className={`${className} bg-white flex items-center border rounded-md border-gray-300 `}
-    >
-      <div className="text-gray-300">
-        <SearchIcon />
-      </div>
-      <input
-        className={`${childClassName} w-full px-3 md:py-2 outline-none text-gray-500`}
-        type="text"
-        placeholder="Search events..."
-      />
-    </div>
-  );
-}
+import SearchBar from './SearchBar';
+import NavItem from './NavItem';
 
 // Main Navigation component
 export default function Navigation() {
@@ -63,7 +26,7 @@ export default function Navigation() {
     };
   }, []);
 
-  const onNavMenuClick = () => {
+  const onNavLinkClick = () => {
     setIsMenuOpen(false);
     document.body.style.overflow = '';
   };
@@ -76,20 +39,20 @@ export default function Navigation() {
   };
 
   return (
-    <nav className="relative z-50 flex items-center justify-between px-6 py-6 text-gray-900 bg-white border-b border-gray-200 md:px-10">
-      <div className="flex gap-4">
+    <nav className="relative z-50 flex items-center justify-between px-6 py-6 text-gray-300 bg-[#0c0c0d] md:px-10">
+      <div className="flex items-center gap-4">
         {/* Mobile Menu Button */}
         <div
           onClick={handleMenuClick}
           aria-expanded={isMenuOpen ? 'true' : 'false'}
-          className="text-gray-500 cursor-pointer md:hidden"
+          className="text-gray-300 cursor-pointer lg:hidden"
         >
           {isMenuOpen ? <MenuClose /> : <MenuOpen />}
         </div>
         {/* Logo */}
         <div className="text-orange-500 md:w-auto w-[120px]">
           <Link href="/">
-            <a onClick={onNavMenuClick}>
+            <a onClick={onNavLinkClick}>
               <Image alt="logo" src={logo} />
             </a>
           </Link>
@@ -99,10 +62,10 @@ export default function Navigation() {
       <div className="flex items-center gap-5">
         {/* Search bar */}
         <SearchBar className="hidden px-3 md:flex" childClassName="py-1" />
-        <ul className="hidden gap-5 md:flex md:justify-center">
-          <NavItem title="Events" href="/events" />
-          <NavItem title="Temp Home" href="/" />
-          <NavItem title="something" href="#" />
+        <ul className="hidden gap-5 lg:flex lg:justify-center">
+          <NavItem title="Events" href="/events" isActiveVariant="whiteText" />
+          <NavItem title="Temp Home" href="/" isActiveVariant="whiteText" />
+          <NavItem title="something" href="#" isActiveVariant="whiteText" />
         </ul>
 
         {/* Sign in */}
@@ -115,7 +78,7 @@ export default function Navigation() {
 
         <MobileMenu
           className={cn(isMenuOpen ? 'flex' : 'hidden')}
-          onNavMenuClick={onNavMenuClick}
+          onNavLinkClick={onNavLinkClick}
         />
       </div>
     </nav>

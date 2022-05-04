@@ -26,7 +26,7 @@ export default function Events({ events }) {
   );
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const res = await fetch(`http://localhost:4000/events`);
   const events = await res.json();
 
