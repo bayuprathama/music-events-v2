@@ -12,11 +12,12 @@
     "@chakra-ui/react": "^1.8.8",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
-    "classname": "^0.0.0",
+    "classnames": "^2.3.1",
     "framer-motion": "^6",
     "next": "12.1.5",
     "react": "18.0.0",
     "react-dom": "18.0.0",
+    "react-hook-form": "^7.30.0",
     "sass": "^1.50.1",
     "zustand": "^4.0.0-rc.0"
   },

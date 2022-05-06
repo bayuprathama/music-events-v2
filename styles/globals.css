@@ -21,3 +21,6 @@ a {
 .hero-font-size {
   font-size: clamp(2rem, 8vw, 5rem);
 }
+.hero-h4-font-size {
+  font-size: clamp(12px, 2vw, 1rem);
+}

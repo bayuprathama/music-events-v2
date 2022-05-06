@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import NavItem from './NavItem';
 
 export default function MobileMenu({ className, onNavLinkClick }) {
@@ -20,8 +19,8 @@ export default function MobileMenu({ className, onNavLinkClick }) {
           isActiveVariant="darkText"
         />
         <NavItem
-          title="Dashboard"
-          href="#"
+          title="Create Event"
+          href="/events/create"
           onClick={onNavLinkClick}
           isActiveVariant="darkText"
         />

@@ -1,4 +1,4 @@
-import cn from 'classname';
+import cn from 'classnames';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
@@ -64,8 +64,11 @@ export default function Navigation() {
         <SearchBar className="hidden px-3 md:flex" childClassName="py-1" />
         <ul className="hidden gap-5 lg:flex lg:justify-center">
           <NavItem title="Events" href="/events" isActiveVariant="whiteText" />
-          <NavItem title="Temp Home" href="/" isActiveVariant="whiteText" />
-          <NavItem title="something" href="#" isActiveVariant="whiteText" />
+          <NavItem
+            title="Create Event"
+            href="/events/create"
+            isActiveVariant="whiteText"
+          />
         </ul>
 
         {/* Sign in */}

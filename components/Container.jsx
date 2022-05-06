@@ -51,7 +51,9 @@ export default function Container({ children }) {
 
       {/* Show Hero */}
       {router.pathname == '/' && <Hero />}
-      <main className="min-h-screen mx-auto mt-10">{children}</main>
+      <main className="container min-h-screen px-4 mx-auto mt-10 md:container lg:container xl:container">
+        {children}
+      </main>
       <Footer />
     </>
   );
