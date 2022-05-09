@@ -11,10 +11,10 @@ export default function Home({ events }) {
   //   event.data.attributes.image.data.attributes.formats;
   // const { data: genres } = event.data.attributes.genres;
   // const { name: regency } = event.data.attributes.regency.data.attributes;
-  console.log(events.data);
+  // console.log(events.data);
   return (
     <div>
-      <h3 className="px-4 mb-10 text-2xl font-medium lg:text-3xl">
+      <h3 className="px-4 mb-10 text-2xl font-medium text-gray-600 lg:text-3xl">
         Upcoming events in <span className="font-bold">Denpasar</span>
       </h3>
 
@@ -25,7 +25,7 @@ export default function Home({ events }) {
             const { name, date, price, time, location, slug } =
               event.attributes;
             const { small: imgSmallUrl } =
-              event.attributes.image.data.attributes.formats;
+              event?.attributes?.image?.data?.attributes?.formats;
             const { data: genres } = event.attributes.genres;
             const { name: regency } = event.attributes.regency.data.attributes;
             return (

@@ -42,7 +42,7 @@ export default function Container({ children }) {
       <Navigation />
 
       {/* Search Bar Mobile Only*/}
-      <div className="pt-1 pb-5 bg-[#0c0c0d] shadow md:hidden">
+      <div className="pt-1 pb-5 bg-white shadow-md md:hidden">
         <SearchBar
           className="justify-center w-11/12 px-3 py-1 mx-auto my-2 border border-gray-300 rounded md:hidden"
           childClassName="py-1"

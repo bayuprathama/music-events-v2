@@ -1,3 +1,4 @@
+import cn from 'classnames';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
@@ -9,11 +10,10 @@ export default function NavItem({
   onClick = null,
 }) {
   const router = useRouter();
-  const isActive = router.pathname === href;
-  const activeVariants = {
-    darkText: isActive ? 'font-bold' : '',
-    whiteText: isActive ? 'text-gray-300 font-medium' : 'text-gray-400',
-  };
+  const isActive = router.pathname === href || `${href}/[slug]`;
+  console.log('asPath', router.asPath);
+  console.log('pathname', router.pathname);
+  console.log('href', `${href}/[slug]`);
 
   /**
    * TODO: Fix active nav title
@@ -35,9 +35,12 @@ export default function NavItem({
   // }, [router.pathname]);
 
   return (
-    <li>
+    <li className="pb-5 border-b border-gray-200 lg:border-none lg:pb-0">
       <Link href={href}>
-        <a onClick={onClick} className={activeVariants[isActiveVariant]}>
+        <a
+          onClick={onClick}
+          className={cn(isActive ? 'font-bold' : '', 'text-gray-500')}
+        >
           {title}
         </a>
       </Link>

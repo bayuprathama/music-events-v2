@@ -39,21 +39,22 @@ export default function Navigation() {
   };
 
   return (
-    <nav className="relative z-50 flex items-center justify-between px-6 py-6 text-gray-300 bg-[#0c0c0d] md:px-10">
+    <nav className="relative z-50 flex items-center justify-between px-6 py-6 text-gray-700 bg-white shadow-sm md:px-10">
       <div className="flex items-center gap-4">
         {/* Mobile Menu Button */}
         <div
           onClick={handleMenuClick}
           aria-expanded={isMenuOpen ? 'true' : 'false'}
-          className="text-gray-300 cursor-pointer lg:hidden"
+          className="text-gray-500 cursor-pointer lg:hidden"
         >
           {isMenuOpen ? <MenuClose /> : <MenuOpen />}
         </div>
         {/* Logo */}
-        <div className="text-orange-500 md:w-auto w-[120px]">
+        <div className="text-red-400 md:w-auto w-[120px]">
           <Link href="/">
-            <a onClick={onNavLinkClick}>
-              <Image alt="logo" src={logo} />
+            <a onClick={onNavLinkClick} className="text-2xl font-bold">
+              GetGigs
+              {/* <Image alt="logo" src={logo} /> */}
             </a>
           </Link>
         </div>
@@ -73,7 +74,7 @@ export default function Navigation() {
 
         {/* Sign in */}
         <a
-          className="px-4 py-2 font-medium text-gray-200 bg-blue-500 rounded-md cursor-pointer leading-[1] text-sm"
+          className="px-4 py-2 font-medium text-gray-500 border border-blue-500 rounded-md cursor-pointer leading-[1] text-sm"
           onClick={onSignInButtonClick}
         >
           Sign in

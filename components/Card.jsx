@@ -15,6 +15,9 @@ export default function Card({
   genres,
   slug,
 }) {
+  const imgAvailability = imgUrl
+    ? { backgroundImage: `url('http://localhost:1337${imgUrl.url}')` }
+    : '';
   return (
     <>
       {/* container */}
@@ -27,17 +30,17 @@ export default function Card({
         > */}
 
         {/* card core component */}
-        <div className="flex flex-col justify-between h-full text-gray-700 rounded-lg shadow cursor-default hover:shadow-lg">
+        <div className="flex flex-col justify-between h-full text-gray-600 rounded-lg shadow cursor-default hover:shadow-lg">
           <div className="flex flex-col justify-between flex-grow bg-white rounded-lg">
             <div className="relative">
               {/* add bottom left text */}
               <div className="absolute bottom-3">
                 <div className="inline-block px-3 py-1 text-xs font-medium text-white bg-[rgba(0,0,0,.75)] rounded-r-md">
-                  {genres?.map((genre) => {
+                  {genres?.map((genre, index) => {
                     return (
                       <span key={genre.id}>
                         <span>{genre.attributes.name}</span>
-                        <span> </span>
+                        <span>{index === genres.length - 1 ? '' : ', '}</span>
                       </span>
                     );
                   })}
@@ -45,9 +48,7 @@ export default function Card({
               </div>{' '}
               <div
                 className="inline-block w-full h-64 [ bg-top bg-no-repeat bg-cover ] rounded-t-lg thumbnail md:h-44 lg:h-48"
-                style={{
-                  backgroundImage: `url('http://localhost:1337${imgUrl.url}')`,
-                }}
+                style={imgAvailability}
               ></div>
             </div>
             <div className="flex flex-col justify-between flex-1 px-4 py-4 md:px-6">
@@ -61,7 +62,7 @@ export default function Card({
                    */}
                   {title}
                 </h3>{' '}
-                <div className="flex items-center mb-1 text-sm font-medium text-orange-500">
+                <div className="flex items-center mb-1 text-sm font-medium text-red-400">
                   <img src="/time.png" alt="watch time" className="mr-2" />
                   <span>
                     {date}, {time}
@@ -85,7 +86,7 @@ export default function Card({
                 </div>
                 <div className="flex items-center mb-4 text-sm text-gray-700">
                   <img src="/money.png" alt="watch time" className="mr-2" />
-                  <span>HTM Rp{price}</span>
+                  <span>HTM Rp{Number(price).toLocaleString()}</span>
                 </div>{' '}
                 {/* <p className="mt-1 mb-4 text-sm leading-normal text-gray-500">
                   {description}
