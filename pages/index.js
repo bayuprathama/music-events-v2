@@ -1,10 +1,21 @@
 import Link from 'next/link';
 import Card from '../components/Card';
+import { motion } from 'framer-motion';
 
 const CARD_URL =
   'http://localhost:1337/api/events?fields=name,date,time,price,slug&populate=genres,regencies,image';
 
 export default function Home({ events }) {
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        delayChildren: 0.4,
+        staggerChildren: 0.015,
+      },
+    },
+  };
   // const { id } = events.data;
   // const { name, date, price, time, location } = event.data.attributes;
   // const { small: imgSmallUrl } =
@@ -14,13 +25,23 @@ export default function Home({ events }) {
   // console.log(events.data);
   return (
     <div>
-      <h3 className="px-4 mb-10 text-2xl font-medium text-gray-600 lg:text-3xl">
+      <motion.h3
+        initial="hidden"
+        animate="show"
+        variants={container}
+        className="px-4 mb-10 text-2xl font-medium text-gray-600 lg:text-3xl"
+      >
         Upcoming events in <span className="font-bold">Denpasar</span>
-      </h3>
+      </motion.h3>
 
       {/* card */}
       <div className="container mx-auto">
-        <div className="flex flex-wrap">
+        <motion.div
+          initial="hidden"
+          animate="show"
+          variants={container}
+          className="flex flex-wrap"
+        >
           {events.data?.map((event) => {
             const { name, date, price, time, location, slug } =
               event.attributes;
@@ -32,7 +53,7 @@ export default function Home({ events }) {
               <Card
                 key={event.id}
                 title={name}
-                imgUrl={imgSmallUrl}
+                imgUrl={imgSmallUrl.url}
                 time={time}
                 date={date}
                 location={location}
@@ -43,7 +64,7 @@ export default function Home({ events }) {
               ></Card>
             );
           })}
-        </div>
+        </motion.div>
       </div>
     </div>
   );

@@ -2,8 +2,7 @@
  *
  */
 
-// genres = data.a
-
+import { motion } from 'framer-motion';
 export default function Card({
   title,
   imgUrl,
@@ -15,13 +14,27 @@ export default function Card({
   genres,
   slug,
 }) {
-  const imgAvailability = imgUrl
-    ? { backgroundImage: `url('http://localhost:1337${imgUrl.url}')` }
-    : '';
+  // const imgAvailability = imgUrl
+  //   ? { backgroundImage: `url('http://localhost:1337${imgUrl.url}')` }
+  //   : '';
+
+  const item = {
+    hidden: { opacity: 0, y: 30 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: 'tween',
+      },
+    },
+  };
   return (
     <>
       {/* container */}
-      <div className="w-full px-4 mb-8 md:w-1/2 lg:w-1/3 xl:w-1/4">
+      <motion.div
+        variants={item}
+        className="w-full px-4 mb-8 md:w-1/2 lg:w-1/3 xl:w-1/4"
+      >
         {/* set whole card to a link */}
         {/* <a
           href="#"
@@ -48,7 +61,9 @@ export default function Card({
               </div>{' '}
               <div
                 className="inline-block w-full h-64 [ bg-top bg-no-repeat bg-cover ] rounded-t-lg thumbnail md:h-44 lg:h-48"
-                style={imgAvailability}
+                style={{
+                  backgroundImage: `url('http://localhost:1337${imgUrl}')`,
+                }}
               ></div>
             </div>
             <div className="flex flex-col justify-between flex-1 px-4 py-4 md:px-6">
@@ -107,7 +122,7 @@ export default function Card({
           </div>
         </div>
         {/* </a> */}
-      </div>
+      </motion.div>
     </>
   );
 }
