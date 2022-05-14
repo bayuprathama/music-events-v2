@@ -2,9 +2,6 @@ import Link from 'next/link';
 import Card from '../components/Card';
 import { motion } from 'framer-motion';
 
-const CARD_URL =
-  'http://localhost:1337/api/events?fields=name,date,time,price,slug&populate=genres,regencies,image';
-
 export default function Home({ events }) {
   const container = {
     hidden: { opacity: 0 },
@@ -26,16 +23,21 @@ export default function Home({ events }) {
   return (
     <div>
       <motion.h3
-        initial="hidden"
-        animate="show"
-        variants={container}
+        initial={{ opacity: 0 }}
+        animate={{
+          opacity: 1,
+          transition: {
+            delay: 0.5,
+            duration: 0.2,
+          },
+        }}
         className="px-4 mb-10 text-2xl font-medium text-gray-600 lg:text-3xl"
       >
         Upcoming events in <span className="font-bold">Denpasar</span>
       </motion.h3>
 
       {/* card */}
-      <div className="container mx-auto">
+      <div className="mx-auto ">
         <motion.div
           initial="hidden"
           animate="show"

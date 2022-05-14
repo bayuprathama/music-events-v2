@@ -17,9 +17,15 @@ export default function Search({ events }) {
   console.log(events.data);
   return (
     <>
-      <h3 className="px-4 pb-5 text-lg font-bold">
-        Hasil pencarian &quot;{router.query.term}&quot; :
-      </h3>
+      {events.data.length > 0 ? (
+        <h3 className="px-4 pb-5 text-lg font-bold">
+          Hasil pencarian &quot;{router.query.term}&quot; :
+        </h3>
+      ) : (
+        <h3 className="px-4 text-lg font-bold text-gray-600">
+          Tidak ada &quot;{router.query.term}&quot; dalam pencarian.
+        </h3>
+      )}
       <div className="container mx-auto">
         <motion.div
           initial="hidden"

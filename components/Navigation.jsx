@@ -119,7 +119,7 @@ export default function Navigation() {
 
         {/* Sign in */}
         <a
-          className="px-4 py-2 font-medium text-gray-500 border border-blue-500 rounded-md cursor-pointer leading-[1] text-sm"
+          className="px-4 py-2 font-medium text-gray-500 border border-blue-500 rounded-md cursor-pointer uppercase leading-[1] text-sm"
           onClick={onSignInButtonClick}
         >
           Sign in
